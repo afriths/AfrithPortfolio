@@ -50,9 +50,10 @@ export default function Navbar() {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-slate-300 hover:text-cyan-400 transition-colors duration-300 font-medium"
+                className="relative text-slate-300 hover:text-cyan-400 transition-colors duration-300 font-medium group"
               >
                 {item.label}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
               </button>
             ))}
           </div>
