@@ -1,6 +1,7 @@
 import { Github, Linkedin, Mail, Download, MapPin, Calendar } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import photo from '../assets/cropped.jpg';
+import resume from '../assets/Afrith_Resume.pdf';
 
 export default function Hero() {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
@@ -144,7 +145,7 @@ export default function Hero() {
                           </button>
                           
                           <a
-                              href="/resume.pdf"
+                              href={resume}
                               download
                               className="group flex items-center gap-3 px-8 py-4 bg-slate-800/50 backdrop-blur-sm text-white rounded-xl font-semibold border-2 border-slate-700 hover:border-cyan-500 hover:bg-slate-700/50 hover:shadow-2xl hover:shadow-cyan-500/30 transform hover:-translate-y-1 transition-all duration-300"
                           >
