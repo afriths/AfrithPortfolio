@@ -40,7 +40,7 @@ export default function Contact() {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto mb-4 md:mb-6"></div>
             <p className="text-base md:text-lg text-slate-300 max-w-2xl mx-auto px-4">
-              Let's collaborate on your next project. I'm always open to discussing new opportunities and ideas.
+              Let's collaborate on your next project. Open to discussing new opportunities and ideas.
             </p>
           </div>
 
@@ -79,9 +79,6 @@ export default function Contact() {
                 <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
                   Ready to start a conversation?
                 </h3>
-                <p className="text-slate-300 text-sm md:text-base px-4">
-                  Connect with me on social media or send me an email
-                </p>
               </div>
 
               <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-6 md:mb-8">

@@ -26,7 +26,7 @@ export default function About() {
     if (!container) return;
 
     let animationId: number;
-    const scrollSpeed = 0.5;
+    const scrollSpeed = 0.7;
 
     const animateScroll = () => {
       if (!isPaused && container && !isUserScrollingRef.current) {
@@ -109,8 +109,8 @@ export default function About() {
         {/* SCROLLABLE SECTION */}
         <div className="relative py-0 md:py-0">
           {/* Fade overlays */}
-          <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-slate-950 to-transparent z-20 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-slate-950 to-transparent z-20 pointer-events-none" />
+          <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-slate-950 to-transparent z-20 pointer-events-none -mx-8" />
+          <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-slate-950 to-transparent z-20 pointer-events-none -mx-8" />
 
           {/* Scroll hint */}
           {showHint && (
@@ -128,7 +128,7 @@ export default function About() {
 
           <div
             ref={containerRef}
-            className="overflow-x-scroll hide-scrollbar flex space-x-6 cursor-grab active:cursor-grabbing"
+            className="overflow-x-scroll hide-scrollbar flex space-x-6 cursor-grab active:cursor-grabbing -mx-8"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             onScroll={handleScroll}
@@ -164,16 +164,6 @@ export default function About() {
                 </div>
               );
             })}
-          </div>
-        </div>
-
-        {/* Status indicator */}
-        <div className="text-center mt-4">
-          <div className="inline-flex items-center space-x-2 bg-slate-800/50 backdrop-blur-sm px-4 py-2 rounded-full">
-            <div className={`w-2 h-2 rounded-full ${isPaused ? 'bg-amber-400 animate-pulse' : 'bg-green-400'}`} />
-            <span className="text-slate-400 text-sm">
-              {isPaused ? 'Paused - Scroll to explore' : 'Auto-scrolling'}
-            </span>
           </div>
         </div>
       </div>

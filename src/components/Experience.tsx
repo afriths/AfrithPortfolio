@@ -123,7 +123,7 @@ export default function Experience() {
 
   return (
     <section id="experience" className="experience-section">
-      <div className="text-center mb-12 md:mb-16">
+      <div className="text-center mb-12 md:mb-4">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-white">
             Experience
           </h2>
@@ -155,10 +155,10 @@ export default function Experience() {
                     ))}
                   </ul>
                 </div>
-                <a href="#" className="card-button">
+                {/* <a href="#" className="card-button">
                   <span>View Details</span>
                   <span className="icon">→</span>
-                </a>
+                </a> */}
               </div>
             </div>
           ))}
@@ -209,7 +209,8 @@ export default function Experience() {
           position: relative;
           width: 300px;
           height: 400px;
-          background: linear-gradient(135deg, #302b63 0%, #07051a 100%);
+          background: linear-gradient(135deg, #302b63 0%, #07051a 90%);
+          border: 3px solid rgba(255, 255, 255, 0.1);
           border-radius: 10px;
           overflow: hidden;
           box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
