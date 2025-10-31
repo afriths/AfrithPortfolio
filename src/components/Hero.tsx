@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Download, MapPin, Calendar } from 'lucide-react';
+import { Download } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import photo from '../assets/cropped.jpg';
 import resume from '../assets/Afrith_Resume.pdf';
@@ -13,11 +13,6 @@ export default function Hero() {
     'Full Stack Developer',
     'App Developer',
   ];
-
-  // const stats = [
-  //   { icon: Calendar, label: 'Experience', value: '2+ Years' },
-  //   { icon: MapPin, label: 'Location', value: 'India' },
-  // ];
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -61,11 +56,10 @@ export default function Hero() {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-cyan-500 rounded-full filter blur-3xl animate-pulse-slow"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500 rounded-full filter blur-3xl animate-pulse-slower"></div>
-        <div className="absolute top-3/4 left-1/2 w-64 h-64 bg-emerald-500 rounded-full filter blur-3xl animate-pulse-medium"></div>
+      {/* Clean Background Elements */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-cyan-500 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500 rounded-full filter blur-3xl"></div>
       </div>
 
       {/* Grid Pattern */}
@@ -73,40 +67,33 @@ export default function Hero() {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-7xl mx-auto">
-              {/* Changed gap to gap-y-12 for mobile vertical separation */}
               <div className="flex flex-col lg:flex-row items-center justify-between gap-y-0 lg:gap-x-16">
-                  {/* Left Column - Photo & Effects */}
-                  <div className="flex-1 flex justify-center lg:justify-start mt-12 lg:mt-0 ">
+                  {/* Left Column - Photo with New Effects */}
+                  <div className="flex-1 flex justify-center lg:justify-start mt-12 lg:mt-0">
                       <div className="relative group">
-                          <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-cyan-500 via-blue-500 to-emerald-500 p-2 shadow-2xl shadow-cyan-500/30 animate-float mt-4">
-                              <div className="w-full h-full rounded-full bg-slate-800 p-2">
+                          {/* Main Photo Container with Glow and Scale Effects */}
+                          <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-cyan-500 via-blue-500 to-emerald-500 p-2 shadow-2xl shadow-cyan-500/30 transition-all duration-700 group-hover:shadow-cyan-500/50 group-hover:scale-105">
+                              <div className="w-full h-full rounded-full bg-slate-800 p-2 overflow-hidden">
                                   <img 
                                     src={photo}
                                     alt="Afrith S"
-                                    className="w-full h-full rounded-full object-cover"
+                                    className="w-full h-full rounded-full object-cover transition-all duration-700"
                                   />
                               </div>
                           </div>
                           
-                          {/* Floating Elements (Unchanged) */}
-                          <div className="absolute -top-6 -right-6 w-12 h-12 bg-cyan-500 rounded-full animate-bounce-slow opacity-80"></div>
-                          <div className="absolute -bottom-4 -left-6 w-8 h-8 bg-blue-500 rounded-full animate-bounce-medium opacity-80"></div>
-                          <div className="absolute top-1/2 -right-10 w-6 h-6 bg-emerald-500 rounded-full animate-bounce-fast opacity-80"></div>
-                          <div className="absolute bottom-8 -left-10 w-5 h-5 bg-cyan-400 rounded-full animate-bounce-slow opacity-70"></div>
+                          {/* Animated Ring Effects */}
+                          <div className="absolute inset-0 rounded-full border-2 border-cyan-400/30 group-hover:border-cyan-400/50 transition-all duration-1000 group-hover:scale-110 group-hover:rotate-180"></div>
+                          <div className="absolute inset-4 rounded-full border border-emerald-400/20 group-hover:border-emerald-400/40 transition-all duration-700 group-hover:scale-105 group-hover:-rotate-90"></div>
+                          
+
                       </div>
                   </div>
 
                   {/* Right Column - Content */}
                   <div className="flex-1 text-center lg:text-left">
-                      {/* Badge (Unchanged) */}
-                      <div className="inline-flex items-center gap-2 px-4 py-2 mb-6">
-                          {/* Content */}
-                      </div>
-
                       {/* Name with Beautiful Styling */}
-                      {/* Reduced margin-bottom from mb-8 to mb-4 on mobile */}
                       <div className="mb-4 md:mb-8"> 
-                          {/* Reduced mb-4 to mb-2 on mobile */}
                           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-2">
                               <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-emerald-400 bg-clip-text text-transparent">
                                   AFRITH
@@ -117,7 +104,7 @@ export default function Hero() {
                               </span>
                           </h1>
                           
-                          {/* Dynamic Typing Text - Reduced height from h-16 to h-12 on mobile */}
+                          {/* Dynamic Typing Text */}
                           <div className="h-12 md:h-20 flex items-center justify-center lg:justify-start"> 
                               <p className="text-xl md:text-2xl lg:text-3xl text-cyan-400 font-semibold">
                                   {currentText}
@@ -127,14 +114,12 @@ export default function Hero() {
                       </div>
 
                       {/* Description */}
-                      {/* Reduced margin-bottom from mb-8 to mb-4 on mobile */}
                       <p className="text-lg md:text-xl text-slate-300 mb-4 md:mb-12 leading-relaxed max-w-2xl lg:max-w-none">
                           Crafting digital experiences with cutting-edge technologies. 
                           Passionate about building scalable applications that solve real-world problems.
                       </p>
 
                       {/* CTA Buttons */}
-                      {/* Reduced margin-bottom from mb-8 to mb-4 on mobile */}
                       <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-4 md:mb-12">
                           <button
                               onClick={() => scrollToSection('contact')}
@@ -153,8 +138,6 @@ export default function Hero() {
                               Download Resume
                           </a>
                       </div>
-
-                      {/* Social Links - Removed as requested */}
                   </div>
               </div>
           </div>
@@ -171,61 +154,12 @@ export default function Hero() {
       </div>
 
       <style jsx>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
-        }
         @keyframes blink {
           0%, 100% { opacity: 1; }
           50% { opacity: 0; }
         }
-        @keyframes pulse-slow {
-          0%, 100% { opacity: 0.2; }
-          50% { opacity: 0.4; }
-        }
-        @keyframes pulse-medium {
-          0%, 100% { opacity: 0.15; }
-          50% { opacity: 0.3; }
-        }
-        @keyframes pulse-slower {
-          0%, 100% { opacity: 0.1; }
-          50% { opacity: 0.25; }
-        }
-        @keyframes bounce-slow {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-10px); }
-        }
-        @keyframes bounce-medium {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-8px); }
-        }
-        @keyframes bounce-fast {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-6px); }
-        }
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
         .animate-blink {
           animation: blink 1s infinite;
-        }
-        .animate-pulse-slow {
-          animation: pulse-slow 4s ease-in-out infinite;
-        }
-        .animate-pulse-medium {
-          animation: pulse-medium 3s ease-in-out infinite;
-        }
-        .animate-pulse-slower {
-          animation: pulse-slower 5s ease-in-out infinite;
-        }
-        .animate-bounce-slow {
-          animation: bounce-slow 3s infinite;
-        }
-        .animate-bounce-medium {
-          animation: bounce-medium 2s infinite;
-        }
-        .animate-bounce-fast {
-          animation: bounce-fast 1.5s infinite;
         }
       `}</style>
     </section>
