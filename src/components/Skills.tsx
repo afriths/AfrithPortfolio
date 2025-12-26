@@ -49,6 +49,7 @@ const skillCategories: SkillCategory[] = [
     Icon: Database,
     skills: [
       { name: "PostgreSQL", description: "Database Design, Optimization, Transactions" },
+      { name: "MongoDB", description: "Database Design, Optimization, Transactions" },
       { name: "MS SQL", description: "Stored Procedures, Query Optimization" },
       { name: "ORM", description: "Object-Relational Mapping, Database Abstraction" },
     ],
@@ -58,8 +59,8 @@ const skillCategories: SkillCategory[] = [
     Icon: ToolIcon, 
     skills: [
       { name: "Git & GitHub", description: "Version Control, CI/CD, Collaboration" },
-      { name: "JSON", description: "Data Serialization, API Communication" },
-      { name: "HFSS", description: "Simulation, Electromagnetic Analysis" },
+      { name: "Azure App Service", description: "Data Serialization, API Communication" },
+      { name: "Node.js", description: "Simulation, Electromagnetic Analysis" },
       { name: "IoT", description: "Internet of Things, Embedded Systems" },
     ],
   },
