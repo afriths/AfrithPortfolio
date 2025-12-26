@@ -4,7 +4,7 @@ import sunTvLogo from '../assets/suntv-logo.png';
 import drdoLogo from '../assets/drdo-logo.png';
 import emertxeLogo from '../assets/e-logo.png';
 import ietLogo from '../assets/iet-logo.png';
-import ExperienceBookPopup from './ExperienceBookPopup';
+import ExperienceCardsPopup from './ExperienceCardsPopup';
 import { experienceDetails, ExperienceDetail } from '../data/experienceDetails';
 
 export default function Experience() {
@@ -210,8 +210,8 @@ export default function Experience() {
         </div>
       </div>
 
-      {/* Experience Book Popup */}
-      <ExperienceBookPopup 
+      {/* Experience Cards Popup */}
+      <ExperienceCardsPopup 
         experience={selectedExperience}
         isOpen={isPopupOpen}
         onClose={closePopup}
