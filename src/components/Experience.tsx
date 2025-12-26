@@ -1,54 +1,81 @@
 import { useRef, useEffect, useState } from 'react';
+import { Eye } from 'lucide-react';
 import sunTvLogo from '../assets/suntv-logo.png';
 import drdoLogo from '../assets/drdo-logo.png';
 import emertxeLogo from '../assets/e-logo.png';
 import ietLogo from '../assets/iet-logo.png';
+import ExperienceBookPopup from './ExperienceBookPopup';
+import { experienceDetails, ExperienceDetail } from '../data/experienceDetails';
 
 export default function Experience() {
+  const [selectedExperience, setSelectedExperience] = useState<ExperienceDetail | null>(null);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
   const experiences = [
     {
+      id: 'ielektron',
       company: 'iELEKTRON Technologies',
       role: 'Associate Software Engineer',
       duration: 'Aug 2025 – Current',
-      description: 'Implementing an employee management system with project tracking capability',
       highlights: [
-        'React based frontend with TypeScript',
-        'Project tracking and management features'
+        'Engineered core modules for an employee database and skill-mapping platform',
+        'Dynamic system with project tracking, resource allocation, and competency assessment'
       ],
       logo: ietLogo
     },
     {
+      id: 'suntv',
       company: 'SUN TV Network',
       role: 'App Developer Intern',
       duration: 'Jan 2025 – May 2025',
-      description: 'Developed On‑Duty App using Flutter and Django',
       highlights: [
-        'Tracked approvals, time & attendance',
-        'Built route planning & destination search'
+        'Developed an On-Duty HRMS mobile application using Flutter and Django',
+        'Workforce monitoring by geo-tagging employee activities with location and timestamps.',
+        'Inuilt map feature for route plan and destination search'
       ],
       logo: sunTvLogo
     },
     {
+      id: 'lrde',
       company: 'LRDE-DRDO',
       role: 'Intern',
       duration: 'May 2024 – July 2024',
-      description: 'Designed Waveguides & Power Dividers using HFSS',
       highlights: [
-        'Specialized in X‑band coaxial groove gap divider'
+        'Designed Waveguides & Power Dividers using HFSS',
+        'Specialized in X‑band coaxial groove gap divider',
+        'Focused on the design, simulation, and optimization of high-frequency waveguide components'
       ],
       logo: drdoLogo
     },
     {
+      id: 'emertxe',
       company: 'EMERTXE',
       role: 'Intern',
       duration: 'March 2023 – May 2023',
-      description: 'IoT‑based Home Automation Project',
       highlights: [
-        'Simulated lighting, temperature & water tank logic'
+        'Built a simulated IoT home automation system using Arduino UNO, PICSimLab, and Blynk IoT',
+        'Implemented control of LEDs, sensors, and water tanks, replicating garden lights, heaters, and coolers.'
       ],
       logo: emertxeLogo
     }
   ];
+
+  const handleViewDetails = (experienceId: string) => {
+    console.log('Clicked experience ID:', experienceId);
+    const experience = experienceDetails.find(exp => exp.id === experienceId);
+    console.log('Found experience:', experience);
+    if (experience) {
+      setSelectedExperience(experience);
+      setIsPopupOpen(true);
+      console.log('Popup should open now');
+    } else {
+      console.log('Experience not found!');
+    }
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+    setSelectedExperience(null);
+  };
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const scrollThumbRef = useRef<HTMLDivElement>(null);
@@ -133,7 +160,10 @@ export default function Experience() {
       <div className="experience-scroll-wrapper" ref={scrollContainerRef}>
         <div className="experience-container">
           {experiences.map((exp, index) => (
-            <div key={index} className="experience-card">
+            <div 
+              key={index} 
+              className="experience-card"
+            >
               {/* Front Card */}
               <div className="card-front">
                 <div className="card-logo">
@@ -148,17 +178,25 @@ export default function Experience() {
               <div className="card-back">
                 <div className="card-role-back">{exp.role}</div>
                 <div className="card-description">
-                  <p>{exp.description}</p>
                   <ul>
                     {exp.highlights.map((highlight, hIndex) => (
                       <li key={hIndex}>{highlight}</li>
                     ))}
                   </ul>
                 </div>
-                {/* <a href="#" className="card-button">
+                <button 
+                  className="card-button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Button clicked!', exp.id);
+                    handleViewDetails(exp.id);
+                  }}
+                  type="button"
+                >
                   <span>View Details</span>
-                  <span className="icon">→</span>
-                </a> */}
+                  <Eye className="icon" size={16} />
+                </button>
               </div>
             </div>
           ))}
@@ -172,7 +210,14 @@ export default function Experience() {
         </div>
       </div>
 
-      <style jsx>{`
+      {/* Experience Book Popup */}
+      <ExperienceBookPopup 
+        experience={selectedExperience}
+        isOpen={isPopupOpen}
+        onClose={closePopup}
+      />
+
+      <style>{`
         .experience-section {
           padding: 80px 20px;
           background: #0f0f23;
@@ -320,11 +365,13 @@ export default function Experience() {
           flex-direction: column;
           background: linear-gradient(135deg, #0f0c29 0%, #302b63 100%);
           transition: left var(--transition) cubic-bezier(0.85,0,0,1); 
-          z-index: 1;
+          z-index: 3;
+          pointer-events: none;
         }
 
         .experience-card:hover .card-back {
           left: 0;
+          pointer-events: auto;
         }
 
         .card-role-back {
@@ -340,7 +387,7 @@ export default function Experience() {
 
         .card-description p {
           color: #e6e6e6;
-          margin-bottom: 15px;
+          margin-bottom: 2px;
           font-size: 0.95rem;
           line-height: 1.5;
         }
@@ -358,6 +405,7 @@ export default function Experience() {
           color: #e6e6e6;
           font-size: 0.95rem;
           line-height: 1.5;
+          text-align: justify;
         }
 
         .card-description li::before {
@@ -371,28 +419,62 @@ export default function Experience() {
         .card-button {
           display: inline-flex;
           align-items: center;
-          justify-content: space-between;
-          padding: 10px 20px;
-          background: transparent;
-          border: 1px solid rgba(255, 255, 255, 0.3);
+          justify-content: center;
+          padding: 8px 16px;
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
           color: white;
           text-decoration: none;
-          border-radius: 30px;
-          font-size: 0.9rem;
-          transition: all 0.3s ease;
+          border-radius: 20px;
+          font-size: 0.8rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
           margin-top: auto;
           align-self: flex-end;
+          gap: 6px;
+          position: relative;
+          z-index: 10;
+          pointer-events: auto;
+          overflow: hidden;
+          text-transform: uppercase;
+          letter-spacing: 0.3px;
+        }
+
+        .card-button::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+          transition: left 0.6s ease;
+        }
+
+        .card-button:hover::before {
+          left: 100%;
         }
 
         .card-button:hover {
-          background: rgba(255, 255, 255, 0.1);
-          border-color: rgba(255, 255, 255, 0.5);
-          padding-right: 18px;
+          background: rgba(255, 255, 255, 0.2);
+          border-color: rgba(255, 255, 255, 0.4);
+          transform: translateY(-3px);
+          box-shadow: 
+            0 10px 30px rgba(0, 0, 0, 0.3),
+            0 0 20px rgba(255, 255, 255, 0.1);
+          color: #ffffff;
+        }
+
+        .card-button:active {
+          transform: translateY(-1px);
+          box-shadow: 
+            0 5px 15px rgba(0, 0, 0, 0.2),
+            0 0 10px rgba(255, 255, 255, 0.05);
         }
 
         .card-button .icon {
-          margin-left: 12px;
-          font-weight: bold;
           transition: transform 0.3s ease;
         }
 

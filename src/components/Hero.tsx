@@ -29,23 +29,23 @@ export default function Hero() {
         setCurrentText(currentRole.substring(0, currentText.length + 1));
       }
 
-      let typeSpeed = 500;
+      let typeSpeed = 5;
 
       if (!isDeleting && currentText === currentRole) {
-        typeSpeed = 1000; // Pause at end
+        typeSpeed = 5; // Pause at end
         setIsDeleting(true);
       } else if (isDeleting && currentText === '') {
         setIsDeleting(false);
         setCurrentTextIndex((prev) => (prev + 1) % roles.length);
-        typeSpeed = 200; // Pause before starting next word
+        typeSpeed = 5; // Pause before starting next word
       } else if (isDeleting) {
-        typeSpeed = 500; // Faster deleting
+        typeSpeed = 5; // Faster deleting
       }
 
       typewriterRef.current = setTimeout(type, typeSpeed);
     };
 
-    typewriterRef.current = setTimeout(type, 200);
+    typewriterRef.current = setTimeout(type, 100);
 
     return () => {
       if (typewriterRef.current) {
@@ -93,7 +93,7 @@ export default function Hero() {
                   {/* Right Column - Content */}
                   <div className="flex-1 text-center lg:text-left">
                       {/* Name with Beautiful Styling */}
-                      <div className="mb-4 md:mb-8"> 
+                      <div className="mt-4 mb-4 md:mb-8"> 
                           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-2">
                               <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-emerald-400 bg-clip-text text-transparent">
                                   AFRITH
