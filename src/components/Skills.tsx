@@ -1,4 +1,3 @@
-import React from "react";
 import { Code, Globe, Smartphone, Database, Wrench as ToolIcon, LucideIcon } from 'lucide-react';
 
 // --- Type Definitions ---
@@ -30,7 +29,7 @@ const skillCategories: SkillCategory[] = [
     Icon: Globe,
     skills: [
       { name: "HTML & CSS", description: "Semantic HTML, Flexbox, Grid, Responsive" },
-      { name: "React", description: "Hooks, Context API, Component Architecture" },
+      { name: "React & Node.js", description: "Hooks, Context API, Component Architecture" },
       { name: "Django", description: "REST APIs, Authentication, ORM" },
       { name: "REST APIs", description: "API Design, Integration, Documentation" },
     ],
@@ -55,13 +54,13 @@ const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    category: "Tools & Other",
+    category: "Platforms & DevOps",
     Icon: ToolIcon, 
     skills: [
-      { name: "Git & GitHub", description: "Version Control, CI/CD, Collaboration" },
-      { name: "Azure App Service", description: "Data Serialization, API Communication" },
-      { name: "Node.js", description: "Simulation, Electromagnetic Analysis" },
-      { name: "IoT", description: "Internet of Things, Embedded Systems" },
+      { name: "Git & GitHub", description: "Source control, team collaboration, CI workflows" },
+      { name: "Azure App Service", description: "Scalable cloud hosting and backend services" },
+      { name: "Apache Airflow", description: "Automated data workflows and pipeline orchestration" },
+      { name: "Docker", description: "Containerized development and production environments" },
     ],
   },
 ];
@@ -125,7 +124,7 @@ export default function Skills(): JSX.Element {
       </div>
 
       {/* Style for custom animations */}
-      <style jsx>{`
+      <style>{`
         @keyframes float {
           0%, 100% { transform: translateY(0px) translateX(0px); }
           50% { transform: translateY(-30px) translateX(20px); }

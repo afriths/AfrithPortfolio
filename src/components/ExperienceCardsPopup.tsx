@@ -83,7 +83,7 @@ export default function ExperienceCardsPopup({ experience, isOpen, onClose }: Ex
             <div className="card-content">
               <div className="tech-grid">
                 {experience.technologiesUsed.map((tech, index) => (
-                  <span key={index} className="tech-tag">{tech}</span>
+                  <span key={index} className="tech-tag" title={tech}>{tech}</span>
                 ))}
               </div>
             </div>
@@ -138,8 +138,8 @@ export default function ExperienceCardsPopup({ experience, isOpen, onClose }: Ex
 
         .cards-container {
           width: 100%;
-          max-width: 1200px;
-          max-height: 90vh;
+          max-width: 1400px;
+          max-height: 95vh;
           background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
           border-radius: 20px;
           padding: 30px;
@@ -235,10 +235,7 @@ export default function ExperienceCardsPopup({ experience, isOpen, onClose }: Ex
         .cards-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          grid-template-rows: 1fr 1fr;
           gap: 20px;
-          flex: 1;
-          min-height: 0;
           overflow-y: auto;
           padding-right: 10px;
         }
@@ -254,8 +251,6 @@ export default function ExperienceCardsPopup({ experience, isOpen, onClose }: Ex
           animation: cardPop 0.6s ease-out;
           animation-fill-mode: both;
           backdrop-filter: blur(10px);
-          min-height: 300px;
-          height: fit-content;
         }
 
         .detail-card:nth-child(1) { animation-delay: 0.1s; }
@@ -303,7 +298,6 @@ export default function ExperienceCardsPopup({ experience, isOpen, onClose }: Ex
 
         .card-content {
           flex: 1;
-          overflow-y: auto;
         }
 
         .card-content p {
@@ -365,6 +359,16 @@ export default function ExperienceCardsPopup({ experience, isOpen, onClose }: Ex
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
+          cursor: help;
+          transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+          white-space: normal;
+          word-wrap: break-word;
+          z-index: 10;
+          position: relative;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         .features-list {
@@ -401,33 +405,40 @@ export default function ExperienceCardsPopup({ experience, isOpen, onClose }: Ex
 
           .cards-container {
             padding: 20px;
+            max-height: 95vh;
           }
 
           .cards-grid {
             grid-template-columns: 1fr;
-            grid-template-rows: repeat(4, auto);
-            height: auto;
-            max-height: 80vh;
+            gap: 20px;
             overflow-y: auto;
+            display: flex;
+            flex-direction: column;
           }
 
           .detail-card {
-            min-height: 200px;
+            min-height: auto;
           }
 
           .company-info {
             flex-direction: column;
             text-align: center;
             gap: 15px;
+            width: 100%;
+            align-items: center;
           }
 
           .popup-header {
+            position: relative;
             flex-direction: column;
-            gap: 20px;
+            gap: 10px;
+            align-items: center;
           }
 
           .close-button {
-            align-self: flex-end;
+            position: absolute;
+            top: 0;
+            right: 0;
           }
         }
 

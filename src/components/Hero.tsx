@@ -143,8 +143,8 @@ export default function Hero() {
           </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce">
+      {/* Scroll Indicator - Hidden on Mobile */}
+      <div className="hidden md:block absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce">
         <button
           onClick={() => scrollToSection('about')}
           className="w-9 h-12 border-2 border-slate-600 rounded-full flex justify-center hover:border-cyan-400 transition-colors duration-300"

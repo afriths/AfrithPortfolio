@@ -41,9 +41,9 @@ export const experienceDetails: ExperienceDetail[] = [
     detailedDescription: 'Engineered core modules of an integrated employee database management and skill-mapping platform using React, TypeScript, Node.js, and Express, backed by Azure Cosmos DB and deployed on Azure App Service, transforming it into a dynamic system with project tracking, resource allocation, and competency assessment.',
     keyAchievements: [
       'Optimized data processing pipeline achieving 93.5% performance improvement (46s→3s)',
-      'Reduced database calls by 99.5% and increased throughput',
       'Automated key workflows including bulk data uploads, conflict resolution, and billability calculations',
-      'Overhauled project panels, dashboards, and financial charts for enhanced user experience'
+      'Overhauled project panels, dashboards, and financial charts for enhanced user experience',
+      'Streamlining data pipeline orchestration by implementing Docker-containerized Apache Airflow workflows for Drone Telemetry Analytics, enabling automated pipeline management and optimization of Python data analysis scripts.'
     ],
     technologiesUsed: [
       'React',
@@ -51,7 +51,9 @@ export const experienceDetails: ExperienceDetail[] = [
       'Node.js',
       'Express',
       'Azure Cosmos DB',
-      'Azure App Service'
+      'Azure App Service',
+      'Apache Airflow',
+      'Docker'
     ],
     projectDetails: {
       title: 'Employee Database Management & Skill-Mapping Platform',
