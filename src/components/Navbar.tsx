@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
+import moonIcon from '../assets/moon.svg';
 
 export default function Navbar() {
+  const { theme, toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -53,7 +56,7 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-slate-900/95 backdrop-blur-md shadow-lg'
+            ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-lg'
             : 'bg-transparent'
         }`}
       >
@@ -61,7 +64,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-20">
             <button
               onClick={() => scrollToSection('home')}
-              className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 transition-all duration-300"
+              className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-500 hover:from-cyan-500 hover:to-blue-500 transition-all duration-300"
             >
               Portfolio
             </button>
@@ -72,18 +75,35 @@ export default function Navbar() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="relative text-slate-300 hover:text-cyan-400 transition-colors duration-300 font-medium group"
+                  className="relative text-slate-700 dark:text-slate-300 hover:text-blue-700 dark:hover:text-cyan-400 transition-colors duration-300 font-medium group"
                 >
                   {item.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 dark:bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
                 </button>
               ))}
+              
+              {/* Theme Toggle for Desktop */}
+              <button
+                onClick={toggleTheme}
+                className="relative w-16 h-8 rounded-full bg-slate-300 dark:bg-slate-700 transition-colors duration-300 flex items-center justify-center"
+                aria-label="Toggle theme"
+              >
+                <div className={`absolute w-6 h-6 rounded-full bg-white shadow-md transform transition-all duration-300 ease-in-out flex items-center justify-center ${
+                  theme === 'dark' ? 'translate-x-4' : '-translate-x-4'
+                }`}>
+                  {theme === 'dark' ? (
+                    <img src={moonIcon} alt="Moon" className="w-4 h-4" />
+                  ) : (
+                    <Sun className="w-4 h-4 text-amber-500 fill-amber-500" />
+                  )}
+                </div>
+              </button>
             </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-slate-300 hover:text-cyan-400 transition-colors duration-300 z-50"
+              className="md:hidden text-slate-700 dark:text-slate-300 hover:text-blue-700 dark:hover:text-cyan-400 transition-colors duration-300 z-50"
             >
               {isMobileMenuOpen ? (
                 <X className="w-6 h-6" />
@@ -96,44 +116,65 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile Drawer - Only for small screens */}
-      <div className={`md:hidden fixed top-20 right-0 w-1/2 h-[calc(100vh-80px)] bg-gray-900/95 backdrop-blur-md z-40 transition-transform duration-300 ease-out ${
+      <div className={`md:hidden fixed top-20 right-0 w-1/2 h-[calc(100vh-80px)] bg-white/95 dark:bg-gray-900/95 backdrop-blur-md z-40 transition-transform duration-300 ease-out ${
         isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
       }`}>
-        <div className="radio-container h-full pt-4">
-          {navItems.map((item, index) => (
-            <div key={item.id} className="relative">
-              <input
-                type="radio"
-                id={`mobile-nav-${item.id}`}
-                name="mobile-nav"
-                checked={activeSection === item.id}
-                onChange={() => {}}
-                className="absolute opacity-0 cursor-pointer"
-              />
-              <label
-                htmlFor={`mobile-nav-${item.id}`}
-                onClick={() => scrollToSection(item.id)}
-                className={`cursor-pointer px-6 py-4 relative text-gray-400 transition-all duration-300 flex items-center gap-3 ${
-                  activeSection === item.id ? 'text-yellow-400 font-medium' : ''
-                }`}
-              >
-                <span className="w-6 text-center">{index + 1}.</span>
-                {item.label}
-              </label>
-            </div>
-          ))}
+        <div className="radio-container h-full pt-4 pb-20 flex flex-col">
+          <div className="flex-1">
+            {navItems.map((item, index) => (
+              <div key={item.id} className="relative">
+                <input
+                  type="radio"
+                  id={`mobile-nav-${item.id}`}
+                  name="mobile-nav"
+                  checked={activeSection === item.id}
+                  onChange={() => {}}
+                  className="absolute opacity-0 cursor-pointer"
+                />
+                <label
+                  htmlFor={`mobile-nav-${item.id}`}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`cursor-pointer px-6 py-4 relative text-slate-600 dark:text-gray-400 transition-all duration-300 flex items-center gap-3 ${
+                    activeSection === item.id ? 'text-blue-700 dark:text-yellow-400 font-medium' : ''
+                  }`}
+                >
+                  <span className="w-6 text-center">{index + 1}.</span>
+                  {item.label}
+                </label>
+              </div>
+            ))}
+          </div>
+
+          {/* Theme Toggle for Mobile - At Bottom */}
+          <div className="px-6 py-4 border-t border-slate-200 dark:border-slate-700">
+            <button
+              onClick={toggleTheme}
+              className="relative w-16 h-8 rounded-full bg-slate-300 dark:bg-slate-700 transition-colors duration-300 flex items-center justify-center mx-auto shadow-md hover:shadow-lg"
+              aria-label="Toggle theme"
+            >
+              <div className={`absolute w-6 h-6 rounded-full bg-white shadow-md transform transition-all duration-300 ease-in-out flex items-center justify-center ${
+                theme === 'dark' ? 'translate-x-4' : '-translate-x-4'
+              }`}>
+                {theme === 'dark' ? (
+                  <img src={moonIcon} alt="Moon" className="w-4 h-4" />
+                ) : (
+                  <Sun className="w-4 h-4 text-amber-500 fill-amber-500" />
+                )}
+              </div>
+            </button>
+          </div>
 
           {/* Glider Container */}
-          <div className="glider-container absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gray-700 to-transparent">
+          <div className="glider-container absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-slate-300 dark:via-gray-700 to-transparent">
             <div 
-              className="glider absolute w-full bg-gradient-to-b from-transparent via-yellow-400 to-transparent transition-transform duration-500 ease-out"
+              className="glider absolute w-full bg-gradient-to-b from-transparent via-blue-500 dark:via-yellow-400 to-transparent transition-transform duration-500 ease-out"
               style={{ 
                 height: '50px',
                 transform: `translateY(${getGliderPosition()}px)`
               }}
             >
-              <div className="absolute inset-0 bg-yellow-400 opacity-20 blur-lg"></div>
-              <div className="absolute left-0 h-full w-32 bg-gradient-to-r from-yellow-400/20 to-transparent"></div>
+              <div className="absolute inset-0 bg-blue-500 dark:bg-yellow-400 opacity-20 blur-lg"></div>
+              <div className="absolute left-0 h-full w-32 bg-gradient-to-r from-blue-500/20 dark:from-yellow-400/20 to-transparent"></div>
             </div>
           </div>
         </div>
@@ -147,7 +188,7 @@ export default function Navbar() {
         onClick={() => setIsMobileMenuOpen(false)}
       />
 
-      <style jsx>{`
+      <style>{`
         .radio-container {
           --main-color: #f7e479;
           --main-color-opacity: #f7e4791c;

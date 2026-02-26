@@ -6,19 +6,22 @@ import Experience from './components/Experience';
 import Education from './components/Education';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
   return (
-    <div className="min-h-screen">
-      <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Experience />
-      <Education />
-      <Contact />
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+        <Navbar />
+        <Hero />
+        <About />
+        <Skills />
+        <Experience />
+        <Education />
+        <Contact />
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }
 

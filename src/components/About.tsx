@@ -81,9 +81,9 @@ export default function About() {
   }, []);
 
   return (
-    <section id="about" className="py-16 md:py-24 bg-slate-950 relative overflow-hidden">
+    <section id="about" className="py-16 md:py-24 bg-slate-50/30 dark:bg-slate-950 relative overflow-hidden transition-colors duration-300">
       {/* Background Glow */}
-      <div className="absolute inset-0 opacity-40">
+      <div className="absolute inset-0 opacity-30 dark:opacity-40">
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-cyan-700/10 rounded-full blur-[100px]" />
         <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-blue-700/10 rounded-full blur-[100px]" />
       </div>
@@ -91,15 +91,15 @@ export default function About() {
       <div className="container mx-auto px-6 relative z-10">
         {/* HEADER */}
         <div className="max-w-4xl mx-auto text-center mb-8 md:mb-12">
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-white tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-slate-900 dark:text-white tracking-tight">
             About{' '}
-            <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-emerald-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-cyan-600 via-blue-600 to-emerald-600 dark:from-cyan-400 dark:via-blue-400 dark:to-emerald-400 bg-clip-text text-transparent">
               Me
             </span>
           </h2>
-          <p className="text-base md:text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
             Associate Software Engineer at{' '}
-            <span className="text-cyan-400 font-semibold">iELEKTRON Technologies</span>, contributing to
+            <span className="text-cyan-600 dark:text-cyan-400 font-semibold">iELEKTRON Technologies</span>, contributing to
             data-driven solutions and workflow automation. Experienced in building robust web and mobile
             applications with API integrations, and passionate about crafting efficient, user-friendly digital
             experiences.
@@ -109,19 +109,19 @@ export default function About() {
         {/* SCROLLABLE SECTION */}
         <div className="relative py-0 md:py-0">
           {/* Fade overlays */}
-          <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-slate-950 to-transparent z-20 pointer-events-none -mx-8" />
-          <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-slate-950 to-transparent z-20 pointer-events-none -mx-8" />
+          <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-slate-50 dark:from-slate-950 to-transparent z-20 pointer-events-none -mx-8" />
+          <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-slate-50 dark:from-slate-950 to-transparent z-20 pointer-events-none -mx-8" />
 
           {/* Scroll hint */}
           {showHint && (
             <div className="absolute top-2 left-1/2 transform -translate-x-1/2 z-30">
-              <div className="flex items-center space-x-2 bg-slate-800/90 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-600">
+              <div className="flex items-center space-x-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-300 dark:border-slate-600">
                 <div className="flex space-x-1">
                   <div className="w-1 h-1 bg-cyan-400 rounded-full animate-bounce" />
                   <div className="w-1 h-1 bg-cyan-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}} />
                   <div className="w-1 h-1 bg-cyan-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}} />
                 </div>
-                <span className="text-cyan-400 text-xs font-medium">Hover to pause and scroll</span>
+                <span className="text-cyan-600 dark:text-cyan-400 text-xs font-medium">Hover to pause and scroll</span>
               </div>
             </div>
           )}
@@ -139,11 +139,11 @@ export default function About() {
                 <div key={index} className="flex-shrink-0 w-72 md:w-80 p-3">
                   <div
                     className="relative p-5 md:p-6 h-full 
-                      rounded-xl border border-slate-700 
-                      bg-slate-900/80 backdrop-blur-sm 
-                      shadow-lg shadow-cyan-500/5 
+                      rounded-xl border border-slate-200 dark:border-slate-700
+                      bg-white/90 dark:bg-slate-900/80 backdrop-blur-sm 
+                      shadow-lg 
                       transition-all duration-300 hover:scale-[1.02]
-                      hover:border-cyan-500/50 hover:shadow-cyan-500/20
+                      hover:border-slate-300 dark:hover:border-cyan-500/50 hover:shadow-xl dark:hover:shadow-cyan-500/20
                       cursor-pointer group"
                   >
                     <div className="flex flex-col gap-3">
@@ -156,8 +156,8 @@ export default function About() {
                         <Icon className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="text-lg md:text-xl font-bold text-white mb-2">{trait.title}</h3>
-                        <p className="text-slate-400 text-sm leading-relaxed">{trait.description}</p>
+                        <h3 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white mb-2">{trait.title}</h3>
+                        <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{trait.description}</p>
                       </div>
                     </div>
                   </div>
@@ -169,7 +169,7 @@ export default function About() {
       </div>
 
       {/* Styles */}
-      <style jsx>{`
+      <style>{`
         .hide-scrollbar::-webkit-scrollbar {
           display: none;
         }

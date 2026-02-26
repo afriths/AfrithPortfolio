@@ -149,9 +149,9 @@ export default function Experience() {
 
 
   return (
-    <section id="experience" className="experience-section">
+    <section id="experience" className="experience-section bg-slate-50/30 dark:bg-[#0f0f23] transition-colors duration-300">
       <div className="text-center mb-12 md:mb-4">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-white">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-slate-900 dark:text-white">
             Experience
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto"></div>
@@ -220,15 +220,12 @@ export default function Experience() {
       <style>{`
         .experience-section {
           padding: 80px 20px;
-          background: #0f0f23;
-          color: #333;
         }
 
         .section-title {
           text-align: center;
           margin-bottom: 50px;
           font-size: 2rem;
-          color: #333;
         }
 
         .experience-scroll-wrapper {

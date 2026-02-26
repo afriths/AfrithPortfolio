@@ -83,7 +83,13 @@ export default function ExperienceCardsPopup({ experience, isOpen, onClose }: Ex
             <div className="card-content">
               <div className="tech-grid">
                 {experience.technologiesUsed.map((tech, index) => (
-                  <span key={index} className="tech-tag" title={tech}>{tech}</span>
+                  <div 
+                    key={index} 
+                    className="tech-tag-wrapper"
+                  >
+                    <span className="tech-tag">{tech}</span>
+                    <span className="tech-tooltip">{tech}</span>
+                  </div>
                 ))}
               </div>
             </div>
@@ -121,7 +127,7 @@ export default function ExperienceCardsPopup({ experience, isOpen, onClose }: Ex
           left: 0;
           right: 0;
           bottom: 0;
-          background: rgba(0, 0, 0, 0.9);
+          background: rgba(0, 0, 0, 0.7);
           backdrop-filter: blur(10px);
           display: flex;
           align-items: center;
@@ -129,6 +135,10 @@ export default function ExperienceCardsPopup({ experience, isOpen, onClose }: Ex
           z-index: 1000;
           padding: 2vh;
           animation: fadeIn 0.3s ease-out;
+        }
+
+        .light .cards-overlay {
+          background: rgba(0, 0, 0, 0.5);
         }
 
         @keyframes fadeIn {
@@ -152,6 +162,12 @@ export default function ExperienceCardsPopup({ experience, isOpen, onClose }: Ex
           flex-direction: column;
         }
 
+        .light .cards-container {
+          background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
+          border: 1px solid rgba(0, 0, 0, 0.1);
+          box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
         @keyframes slideUp {
           from { 
             opacity: 0;
@@ -171,6 +187,10 @@ export default function ExperienceCardsPopup({ experience, isOpen, onClose }: Ex
           padding-bottom: 15px;
           border-bottom: 1px solid rgba(255, 255, 255, 0.1);
           flex-shrink: 0;
+        }
+
+        .light .popup-header {
+          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .company-info {
@@ -197,6 +217,13 @@ export default function ExperienceCardsPopup({ experience, isOpen, onClose }: Ex
           background-clip: text;
         }
 
+        .light .company-name {
+          background: linear-gradient(135deg, #0ea5e9, #10b981);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
         .role-title {
           font-size: 1rem;
           font-weight: 600;
@@ -205,12 +232,20 @@ export default function ExperienceCardsPopup({ experience, isOpen, onClose }: Ex
           display: inline;
         }
 
+        .light .role-title {
+          color: #1e293b;
+        }
+
         .duration {
           font-size: 1rem;
           color: #9ca3af;
           margin: 0;
           display: inline;
           margin-left: 8px;
+        }
+
+        .light .duration {
+          color: #64748b;
         }
 
         .close-button {
@@ -227,9 +262,19 @@ export default function ExperienceCardsPopup({ experience, isOpen, onClose }: Ex
           transition: all 0.3s ease;
         }
 
+        .light .close-button {
+          background: rgba(0, 0, 0, 0.05);
+          border: 1px solid rgba(0, 0, 0, 0.1);
+          color: #1e293b;
+        }
+
         .close-button:hover {
           background: rgba(255, 255, 255, 0.2);
           transform: scale(1.05);
+        }
+
+        .light .close-button:hover {
+          background: rgba(0, 0, 0, 0.1);
         }
 
         .cards-grid {
@@ -251,6 +296,11 @@ export default function ExperienceCardsPopup({ experience, isOpen, onClose }: Ex
           animation: cardPop 0.6s ease-out;
           animation-fill-mode: both;
           backdrop-filter: blur(10px);
+        }
+
+        .light .detail-card {
+          background: rgba(255, 255, 255, 0.8);
+          border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .detail-card:nth-child(1) { animation-delay: 0.1s; }
@@ -276,6 +326,12 @@ export default function ExperienceCardsPopup({ experience, isOpen, onClose }: Ex
           box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
 
+        .light .detail-card:hover {
+          background: rgba(255, 255, 255, 1);
+          border-color: rgba(0, 0, 0, 0.15);
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
         .card-header {
           display: flex;
           align-items: center;
@@ -285,8 +341,16 @@ export default function ExperienceCardsPopup({ experience, isOpen, onClose }: Ex
           border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        .light .card-header {
+          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
         .card-header svg {
           color: #60a5fa;
+        }
+
+        .light .card-header svg {
+          color: #0ea5e9;
         }
 
         .card-header h4 {
@@ -294,6 +358,10 @@ export default function ExperienceCardsPopup({ experience, isOpen, onClose }: Ex
           font-weight: 600;
           color: #ffffff;
           margin: 0;
+        }
+
+        .light .card-header h4 {
+          color: #1e293b;
         }
 
         .card-content {
@@ -306,6 +374,10 @@ export default function ExperienceCardsPopup({ experience, isOpen, onClose }: Ex
           font-size: 0.95rem;
           margin: 0;
           text-align: justify;
+        }
+
+        .light .card-content p {
+          color: #475569;
         }
 
         .achievements-list {
@@ -327,6 +399,10 @@ export default function ExperienceCardsPopup({ experience, isOpen, onClose }: Ex
           text-align: justify;
         }
 
+        .light .achievements-list li {
+          color: #475569;
+        }
+
         .achievement-number {
           width: 24px;
           height: 24px;
@@ -341,34 +417,106 @@ export default function ExperienceCardsPopup({ experience, isOpen, onClose }: Ex
           flex-shrink: 0;
         }
 
+        .light .achievement-number {
+          background: linear-gradient(135deg, #0ea5e9, #10b981);
+        }
+
         .tech-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+          grid-template-columns: repeat(3, 1fr);
           gap: 12px;
-          align-items: center;
+          align-items: stretch;
+        }
+
+        .tech-tag-wrapper {
+          position: relative;
+          display: block;
+          min-width: 0;
         }
 
         .tech-tag {
           background: linear-gradient(135deg, #667eea, #764ba2);
           color: white;
-          padding: 8px 12px;
-          border-radius: 12px;
+          padding: 0 16px;
+          border-radius: 8px;
           font-size: 0.8rem;
           font-weight: 500;
           text-align: center;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          height: 36px;
+          display: block;
+          line-height: 36px;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          cursor: help;
-          transition: all 0.3s ease;
+          width: 100%;
+        }
+
+        .light .tech-tag {
+          background: linear-gradient(135deg, #6366f1, #8b5cf6);
         }
 
         .tech-tag:hover {
-          white-space: normal;
-          word-wrap: break-word;
+          transform: scale(1.05);
           z-index: 10;
-          position: relative;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .light .tech-tag:hover {
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Tooltip */
+        .tech-tooltip {
+          position: absolute;
+          bottom: calc(100% + 12px);
+          left: 50%;
+          transform: translateX(-50%);
+          background: rgba(80, 80, 80, 0.95);
+          color: white;
+          padding: 10px 16px;
+          border-radius: 8px;
+          font-size: 0.85rem;
+          white-space: nowrap;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.3s ease;
+          z-index: 100;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .light .tech-tooltip {
+          background: rgba(100, 100, 100, 0.95);
+        }
+
+        /* Tooltip arrow */
+        .tech-tooltip::after {
+          content: '';
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 0;
+          height: 0;
+          border-left: 8px solid transparent;
+          border-right: 8px solid transparent;
+          border-top: 10px solid rgba(80, 80, 80, 0.95);
+        }
+
+        .light .tech-tooltip::after {
+          border-top-color: rgba(100, 100, 100, 0.95);
+        }
+
+        /* Show tooltip on hover */
+        .tech-tag-wrapper:hover .tech-tooltip {
+          opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+          .tech-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
         }
 
         .features-list {
@@ -389,12 +537,20 @@ export default function ExperienceCardsPopup({ experience, isOpen, onClose }: Ex
           text-align: justify;
         }
 
+        .light .features-list li {
+          color: #475569;
+        }
+
         .features-list li::before {
           content: '▸';
           position: absolute;
           left: 0;
           color: #34d399;
           font-weight: bold;
+        }
+
+        .light .features-list li::before {
+          color: #10b981;
         }
 
         /* Mobile Responsiveness */
@@ -452,13 +608,25 @@ export default function ExperienceCardsPopup({ experience, isOpen, onClose }: Ex
           border-radius: 4px;
         }
 
+        .light .cards-grid::-webkit-scrollbar-track {
+          background: rgba(0, 0, 0, 0.05);
+        }
+
         .cards-grid::-webkit-scrollbar-thumb {
           background: rgba(255, 255, 255, 0.3);
           border-radius: 4px;
         }
 
+        .light .cards-grid::-webkit-scrollbar-thumb {
+          background: rgba(0, 0, 0, 0.2);
+        }
+
         .cards-grid::-webkit-scrollbar-thumb:hover {
           background: rgba(255, 255, 255, 0.5);
+        }
+
+        .light .cards-grid::-webkit-scrollbar-thumb:hover {
+          background: rgba(0, 0, 0, 0.3);
         }
 
         /* Scrollbar Styling for Card Content */
@@ -471,13 +639,25 @@ export default function ExperienceCardsPopup({ experience, isOpen, onClose }: Ex
           border-radius: 2px;
         }
 
+        .light .card-content::-webkit-scrollbar-track {
+          background: rgba(0, 0, 0, 0.05);
+        }
+
         .card-content::-webkit-scrollbar-thumb {
           background: rgba(255, 255, 255, 0.3);
           border-radius: 2px;
         }
 
+        .light .card-content::-webkit-scrollbar-thumb {
+          background: rgba(0, 0, 0, 0.2);
+        }
+
         .card-content::-webkit-scrollbar-thumb:hover {
           background: rgba(255, 255, 255, 0.5);
+        }
+
+        .light .card-content::-webkit-scrollbar-thumb:hover {
+          background: rgba(0, 0, 0, 0.3);
         }
       `}</style>
     </div>

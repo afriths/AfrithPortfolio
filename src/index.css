@@ -7,6 +7,16 @@
     scroll-behavior: smooth;
   }
 
+  html.light {
+    --bg-primary: 248 250 252;
+    --bg-secondary: 241 245 249;
+    --text-primary: 15 23 42;
+    --text-secondary: 51 65 85;
+    --border-color: 226 232 240;
+    --accent-from: 6 182 212;
+    --accent-to: 59 130 246;
+  }
+
   body {
     @apply antialiased;
   }
@@ -75,3 +85,34 @@
 }
 
 /* About section */
+
+/* Light Theme Utilities */
+.light {
+  /* About Section */
+  #about {
+    background: rgba(248, 250, 252, 0.3);
+  }
+
+  /* Skills Section */
+  #skills {
+    background: #ffffff;
+  }
+
+  /* Experience Section */
+  #experience {
+    background: rgba(248, 250, 252, 0.3);
+  }
+
+  /* Education Section */
+  #education {
+    background: #ffffff;
+  }
+
+  /* Contact Section */
+  #contact {
+    background: rgba(248, 250, 252, 0.3);
+  }
+
+  /* Footer */
+  /* Removed fixed background - now controlled by Tailwind classes in Footer.tsx */
+}
